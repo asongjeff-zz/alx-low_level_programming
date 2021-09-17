@@ -1,8 +1,7 @@
-#include <main.h>
 #include <stdio.h>
 /**
   *main - prints the  name of this program.
-  *@argc: counts number of arguemnts paased in th command line.
+  *@argc: counts number of arguments passed in the command line.
   *@argv: stores arguments passed in the command line.
   *
   *Return: 0 on success.
