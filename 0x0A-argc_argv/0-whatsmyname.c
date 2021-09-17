@@ -1,4 +1,5 @@
 #include <main.h>
+#include <stdio.h>
 /**
   *main - prints the  name of this program.
   *@argc: counts number of arguemnts paased in th command line.
