@@ -9,24 +9,33 @@
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *p;
-	unsigned int s1count, s2count, sizeBuffer, i;
+	char *string = NULL;
+	char *ptr = NULL;
+	unsigned int len1, len2, len;
 
 	if (s1 == NULL)
 		s1 = "";
-	if (s2 == NULL)
+	if (!s2)
 		s2 = "";
-	for (s1count = 0; s1[s1count]; s1count++)
+	for (len1 = 0; s1[len1]; len1++)
 		;
-	for (s2count = 0; s2[s2count]; s2count++)
+	for (len2 = 0; s2[len2]; len2++)
 		;
-	s2count > n ? (s2count = n) : (n = s2count);
-	sizeBuffer = s1count + s2count + 1;
-	p = malloc(sizeBuffer * sizeof(char));
-	if (p == NULL)
+	if (len2 > n)
+		len2 = n;
+	len = len1 + len2 + 1;
+	string = malloc(sizeof(*string) * len);
+	ptr = string;
+	if (string == NULL)
 		return (NULL);
-	for (i = 0; i < sizeBuffer - 1; i++)
-		i < s1count ? (p[i] = s1[i]) : (p[i] = s2[i - s1count]);
-	p[sizeBuffer] = '\0';
-	return (p);
+	while (*s1)
+	{
+		*string++ = *s1++;
+	}
+	while (n-- && *s2 != '\0')
+	{
+		*string++ = *s2++;
+	}
+	*string = '\0';
+	return (ptr);
 }
