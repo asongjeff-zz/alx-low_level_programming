@@ -1,31 +1,25 @@
-/**
-  * countBits - count number of bits to be flipped.
-  * @x: xor of n and m.
-  *
-  * Return: number of bits.
-  */
-unsigned int countBits(unsigned int x)
-{
-	unsigned int count;
+#include "main.h"
+#include <stdio.h>
 
-	count = 0;
-	while (x > 0)
-	{
-		count++;
-		x &= (x - 1);
-	}
-	return (count);
-}
 /**
-  * flip_bits - returns the number of bits needed to flip.
-  * @n: number.
-  * @m: number.
-  *
-  * Description: Number of bits neded to flip to get from one number
-  * to another.
-  * Return: number of bits.
-  */
+ * flip_bits - flip bits to convert one number to another number
+ * @n: first number
+ * @m: second number to convert to
+ * Return: number of bits that was needed to flip
+ */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	return (countBits(n ^ m));
+	unsigned long int diff;
+	int counter;
+
+	diff = n ^ m;
+	counter = 0;
+
+	while (diff)
+	{
+		counter++;
+		diff &= (diff - 1);
+	}
+
+	return (counter);
 }
